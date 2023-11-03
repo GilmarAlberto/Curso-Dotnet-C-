@@ -1,0 +1,24 @@
+[submodule "NewTalents"]
+	path = NewTalents
+	url = https://github.com/seu-usuario/NewTalents.git
+[submodule "trilha-net-api-desafio"]
+	path = trilha-net-api-desafio
+	url = https://github.com/GilmarAlberto/trilha-net-api-desafio.git
+[submodule "trilha-net-banco-de-dados"]
+	path = trilha-net-banco-de-dados
+	url = https://github.com/GilmarAlberto/trilha-net-banco-de-dados.git
+[submodule "trilha-net-banco-de-dados-desafio"]
+	path = trilha-net-banco-de-dados-desafio
+	url = https://github.com/GilmarAlberto/trilha-net-banco-de-dados-desafio.git
+[submodule "trilha-net-explorando-desafio"]
+	path = trilha-net-explorando-desafio
+	url = https://github.com/GilmarAlberto/trilha-net-explorando-desafio.git
+[submodule "trilha-net-fundamentos-desafio"]
+	path = trilha-net-fundamentos-desafio
+	url = https://github.com/GilmarAlberto/trilha-net-fundamentos-desafio.git
+[submodule "trilha-net-poo-desafio"]
+	path = trilha-net-poo-desafio
+	url = https://github.com/GilmarAlberto/trilha-net-poo-desafio.git
+[submodule "trilha-net-testes-unitarios-desafio"]
+	path = trilha-net-testes-unitarios-desafio
+	url = https://github.com/GilmarAlberto/trilha-net-testes-unitarios-desafio.git
