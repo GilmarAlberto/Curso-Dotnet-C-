@@ -1,0 +1,15 @@
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio011\bin\Debug\net7.0\Desafio011.exe
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio011\bin\Debug\net7.0\Desafio011.deps.json
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio011\bin\Debug\net7.0\Desafio011.runtimeconfig.json
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio011\bin\Debug\net7.0\Desafio011.dll
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio011\bin\Debug\net7.0\Desafio011.pdb
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio011\obj\Debug\net7.0\Desafio011.csproj.AssemblyReference.cache
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio011\obj\Debug\net7.0\Desafio011.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio011\obj\Debug\net7.0\Desafio011.AssemblyInfoInputs.cache
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio011\obj\Debug\net7.0\Desafio011.AssemblyInfo.cs
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio011\obj\Debug\net7.0\Desafio011.csproj.CoreCompileInputs.cache
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio011\obj\Debug\net7.0\Desafio011.dll
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio011\obj\Debug\net7.0\refint\Desafio011.dll
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio011\obj\Debug\net7.0\Desafio011.pdb
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio011\obj\Debug\net7.0\Desafio011.genruntimeconfig.cache
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio011\obj\Debug\net7.0\ref\Desafio011.dll
