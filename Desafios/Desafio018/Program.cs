@@ -11,19 +11,18 @@ class Program
 
         do
         {
-            System.Console.WriteLine("Digite o tamanho do arquivo: ");
+            System.Console.WriteLine("Digite o tamanho do arquivo em MB: ");
         } while ((!double.TryParse(Console.ReadLine(), out tamanho)));
 
         do
         {
-            System.Console.WriteLine("Digite a velocidade da internet: ");
+            System.Console.WriteLine("Digite a velocidade da internet em Mbps: ");
         } while ((!double.TryParse(Console.ReadLine(), out velocidade)));
 
-        tempo = tamanho / velocidade;
+        tempo = (tamanho / (velocidade/8))/60;
 
-        System.Console.WriteLine($"O tempo gasto para efetuar o download é de: {tempo}");
+        System.Console.WriteLine($"O tempo gasto para efetuar o download é de: {tempo:F2} minutos");
      
     }
 
 }
-
