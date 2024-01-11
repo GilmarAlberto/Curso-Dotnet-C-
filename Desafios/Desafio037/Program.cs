@@ -14,7 +14,6 @@ class Program
     {
         int[] vetor = new int[] {326, 12, 326, 300, 100, 320, 310, 305, 301, 101, 311, 111, 25, 20, 10, 21, 11, 1, 7, 16, 986, 837, 702, 601, 598, 487, 276};
         int unidade = 0, dezena = 0, centena = 0, i;
-        //string texto;
 
         for(i = 0; i < vetor.Length; i++){
         
@@ -22,11 +21,45 @@ class Program
             dezena  = (vetor[i] % 100) / 10;
             unidade = (vetor[i] % 100) % 10;
 
-            System.Console.WriteLine($"numero: {vetor[i]} ");
-            System.Console.WriteLine($"{centena} centenas, {dezena} dezenas, {unidade} unidades");
+            if(centena != 0){
+                System.Console.Write($"{centena} centena");
 
+                if(centena > 1){
+                    System.Console.Write("s");
+                }
 
+                if(dezena != 0 && unidade != 0){
+                    System.Console.Write(", ");
+                }else if(dezena != 0 || unidade != 0 ){
+                    System.Console.Write(" e ");
+                }
+            }
+          
+            if(dezena != 0){
+                System.Console.Write($"{dezena} dezena");
+
+                if(dezena > 1){
+                    System.Console.Write("s");
+                }
+
+                if(unidade != 0){
+                    System.Console.Write(" e ");
+                }
+            }
+
+            if(unidade != 0){
+                System.Console.Write($"{unidade} unidade");
+            }
+
+            if(unidade > 1){
+                System.Console.Write("s");
+            }
+
+            System.Console.WriteLine();
+            
         }
+
+        
         
     }
 
