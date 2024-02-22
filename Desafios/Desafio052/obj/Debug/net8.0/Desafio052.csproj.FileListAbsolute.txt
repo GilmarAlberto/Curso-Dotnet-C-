@@ -1,0 +1,15 @@
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio052\bin\Debug\net8.0\Desafio052.exe
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio052\bin\Debug\net8.0\Desafio052.deps.json
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio052\bin\Debug\net8.0\Desafio052.runtimeconfig.json
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio052\bin\Debug\net8.0\Desafio052.dll
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio052\bin\Debug\net8.0\Desafio052.pdb
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio052\obj\Debug\net8.0\Desafio052.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio052\obj\Debug\net8.0\Desafio052.AssemblyInfoInputs.cache
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio052\obj\Debug\net8.0\Desafio052.AssemblyInfo.cs
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio052\obj\Debug\net8.0\Desafio052.csproj.CoreCompileInputs.cache
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio052\obj\Debug\net8.0\Desafio052.sourcelink.json
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio052\obj\Debug\net8.0\Desafio052.dll
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio052\obj\Debug\net8.0\refint\Desafio052.dll
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio052\obj\Debug\net8.0\Desafio052.pdb
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio052\obj\Debug\net8.0\Desafio052.genruntimeconfig.cache
+C:\Users\SAMSUNG\Documents\Curso Dotnet C#\Desafios\Desafio052\obj\Debug\net8.0\ref\Desafio052.dll
