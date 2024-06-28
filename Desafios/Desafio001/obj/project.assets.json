@@ -1,36 +1,36 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {}
+    "net8.0": {}
   },
   "libraries": {},
   "projectFileDependencyGroups": {
-    "net7.0": []
+    "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\SAMSUNG\\.nuget\\packages\\": {}
+    "C:\\Users\\gilab\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\SAMSUNG\\Documents\\Curso Dotnet C#\\Desafios\\Desafio001\\Desafio001.csproj",
+      "projectUniqueName": "C:\\Users\\gilab\\Documents\\Curso Dotnet C#\\Desafios\\Desafio001\\Desafio001.csproj",
       "projectName": "Desafio001",
-      "projectPath": "C:\\Users\\SAMSUNG\\Documents\\Curso Dotnet C#\\Desafios\\Desafio001\\Desafio001.csproj",
-      "packagesPath": "C:\\Users\\SAMSUNG\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\SAMSUNG\\Documents\\Curso Dotnet C#\\Desafios\\Desafio001\\obj\\",
+      "projectPath": "C:\\Users\\gilab\\Documents\\Curso Dotnet C#\\Desafios\\Desafio001\\Desafio001.csproj",
+      "packagesPath": "C:\\Users\\gilab\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gilab\\Documents\\Curso Dotnet C#\\Desafios\\Desafio001\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\SAMSUNG\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\gilab\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "net7.0"
+        "net8.0"
       ],
       "sources": {
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {}
         }
       },
@@ -38,11 +38,16 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
-      "net7.0": {
-        "targetAlias": "net7.0",
+      "net8.0": {
+        "targetAlias": "net8.0",
         "imports": [
           "net461",
           "net462",
@@ -59,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
