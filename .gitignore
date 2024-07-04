@@ -52,3 +52,5 @@ $RECYCLE.BIN/
 
 # Other
 *.DS_Store
+
+.fake
