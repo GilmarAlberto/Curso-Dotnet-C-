@@ -37,7 +37,7 @@ class Program
 
         System.Console.WriteLine($"Quantidade de latas de tinta: {qtdLatas}");
         System.Console.WriteLine($"Quantidade de galões de tinta: {qtdGaloes}");
-        System.Console.WriteLine($"Preço Total - {precoTotal}")
+        System.Console.WriteLine($"Preço Total - {precoTotal}");
 
     }
 

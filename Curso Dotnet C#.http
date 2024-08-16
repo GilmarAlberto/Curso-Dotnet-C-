@@ -1,0 +1,6 @@
+@Curso_Dotnet_C__HostAddress = http://localhost:5051
+
+GET {{Curso_Dotnet_C__HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
