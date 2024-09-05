@@ -5,14 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 using MinimalAPI.Infraestrutura.Db; // Para DbContexto
 using MinimalAPI.DTOs; // Para LoginDTO
 using MinimalAPI.Dominio.ModelViews;
-using MinimalAPI.Dominio.Entidades; 
+using MinimalAPI.Dominio.Entidades;
 
 #region Builder
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IAdministradorServico, AdministradorServico>();
 builder.Services.AddScoped<IVeiculoServico, VeiculoServico>();
-
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -34,20 +33,19 @@ app.MapGet("/", () => Results.Json(new Home())).WithTags("Home");
 #region Administradores
 
 app.MapPost("/administradores/login", ([FromBody] LoginDTO loginDTO, IAdministradorServico administradorServico) => {
-    if(administradorServico.Login(loginDTO) != null){
+    if (administradorServico.Login(loginDTO) != null) {
         return Results.Ok("Login com sucesso");
-    }
-    else{
-        return Results.Unauthorized(); 
+    } else {
+        return Results.Unauthorized();
     }
 }).WithTags("Administradores");
 #endregion
 
 #region Veiculos
- 
+
 app.MapPost("/veiculos", ([FromBody] VeiculoDTO veiculoDTO, IVeiculoServico veiculoServico) => {
 
-    var veiculo = new Veiculo{
+    var veiculo = new Veiculo {
         Nome = veiculoDTO.Nome,
         Marca = veiculoDTO.Marca,
         Ano = veiculoDTO.Ano
@@ -63,7 +61,18 @@ app.MapGet("/veiculos", ([FromQuery] int? pagina, IVeiculoServico veiculoServico
     var veiculos = veiculoServico.Todos(pagina);
 
     return Results.Ok(veiculos);
-}).WithTags("Veiculo");
+}).WithTags("Veiculos");
+
+app.MapGet("/veiculos/{id}", ([FromRoute] int id, IVeiculoServico veiculoServico) => {
+
+    var veiculo = veiculoServico.BuscaPorId(id);
+
+    if (veiculo == null)
+        return Results.NotFound();
+
+    return Results.Ok(veiculo);
+}).WithTags("Veiculos");
+
 #endregion
 
 #region App
