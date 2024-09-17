@@ -39,6 +39,14 @@ app.MapPost("/administradores/login", ([FromBody] LoginDTO loginDTO, IAdministra
         return Results.Unauthorized();
     }
 }).WithTags("Administradores");
+
+app.MapPost("/administradores", ([FromBody] AdministradorDTO admninistradorDTO, IAdministradorServico administradorServico) => {
+    if (administradorServico.Login(loginDTO) != null) {
+        return Results.Ok("Login com sucesso");
+    } else {
+        return Results.Unauthorized();
+    }
+}).WithTags("Administradores");
 #endregion
 
 #region Veiculos
