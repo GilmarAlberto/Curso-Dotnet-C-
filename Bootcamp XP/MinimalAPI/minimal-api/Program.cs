@@ -42,7 +42,19 @@ app.MapPost("/administradores/login", ([FromBody] LoginDTO loginDTO, IAdministra
 }).WithTags("Administradores");
 
 app.MapGet("/administradores", ([FromQuery] int? pagina, IAdministradorServico administradorServico) => {
-    return Results.Ok(administradorServico.Todos(pagina));
+    var adms = new List <AdministradorModelView>();
+    var administradores = administradorServico.Todos(pagina);
+    foreach(var adm in administradores)
+    {
+        adms.Add(new AdministradorModelView{
+            Id = adm.Id,
+            Email = adm.Email,
+            Perfil =adm.Perfil
+
+        });
+    }
+
+    return Results.Ok(adms);
 }).WithTags("Administradores");
 
 app.MapPost("/administradores", ([FromBody] AdministradorDTO administradorDTO, IAdministradorServico administradorServico) => {
@@ -65,16 +77,29 @@ app.MapPost("/administradores", ([FromBody] AdministradorDTO administradorDTO, I
     {
         Email = administradorDTO.Email,
         Senha = administradorDTO.Senha,
-        Perfil = administradorDTO.Perfil.ToString() ?? Perfil.editor.ToString()
+        Perfil = administradorDTO.Perfil.ToString() ?? Perfil.Editor.ToString()
     };
 
     administradorServico.Incluir(administrador);
-    return Results.Created($"/administradores/{administrador.Id}", administrador);
+    return Results.Created($"/administradores/{administrador.Id}", new AdministradorModelView{
+        Id = administrador.Id,
+        Email = administrador.Email,
+        Perfil = administrador.Perfil
+        
+    });
 }).WithTags("Administradores");
 
 app.MapGet("/administradores/{id}", ([FromRoute] int id, IAdministradorServico administradorServico) => {
     var administrador = administradorServico.BuscaPorId(id);
-    return administrador == null ? Results.NotFound() : Results.Ok(administrador);
+
+    if(administrador == null)
+        return Results.NotFound();
+        
+    return Results.Ok(new AdministradorModelView{
+        Id = administrador.Id,
+        Email = administrador.Email,
+        Perfil =administrador.Perfil
+    });
 }).WithTags("Administradores");
 
 #endregion

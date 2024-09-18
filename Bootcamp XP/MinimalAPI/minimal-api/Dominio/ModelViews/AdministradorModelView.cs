@@ -6,5 +6,5 @@ public record AdministradorModelView
 {
     public int Id { get; set; } = default!;
     public string Email { get; set; } = default!;
-    public Perfil Perfil { get; set; } = Perfil.adm; // Definindo um valor padrão do enum
+    public string Perfil { get; set; } = default!; // Definindo um valor padrão do enum
 }
