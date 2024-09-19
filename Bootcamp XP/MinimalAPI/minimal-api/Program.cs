@@ -7,9 +7,35 @@ using MinimalAPI.DTOs; // Para LoginDTO
 using MinimalAPI.Dominio.ModelViews;
 using MinimalAPI.Dominio.Entidades;
 using MinimalAPI.Dominio.Enuns; // Para Perfil
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 #region Builder
 var builder = WebApplication.CreateBuilder(args);
+
+// Correção para pegar o valor da chave diretamente
+var key = builder.Configuration["Jwt:Key"];
+
+if (string.IsNullOrEmpty(key)) key = "123456";
+
+// Configuração de autenticação JWT
+builder.Services.AddAuthentication(option => {
+    option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(option => {
+    option.TokenValidationParameters = new TokenValidationParameters {
+        ValidateLifetime = true,
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidIssuer = "yourIssuer", // Ajuste conforme necessário
+        ValidAudience = "yourAudience", // Ajuste conforme necessário
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)),
+        ClockSkew = TimeSpan.Zero // Elimina o tempo extra de tolerância
+    };
+});
+
+builder.Services.AddAuthorization();
 
 builder.Services.AddScoped<IAdministradorServico, AdministradorServico>();
 builder.Services.AddScoped<IVeiculoServico, VeiculoServico>();
@@ -17,10 +43,11 @@ builder.Services.AddScoped<IVeiculoServico, VeiculoServico>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Configuração do DbContext com MySQL
 builder.Services.AddDbContext<DbContexto>(options => {
     options.UseMySql(
-        builder.Configuration.GetConnectionString("mysql"),
-        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("mysql"))
+        builder.Configuration.GetConnectionString("MySql"),
+        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MySql"))
     );
 });
 
@@ -42,24 +69,20 @@ app.MapPost("/administradores/login", ([FromBody] LoginDTO loginDTO, IAdministra
 }).WithTags("Administradores");
 
 app.MapGet("/administradores", ([FromQuery] int? pagina, IAdministradorServico administradorServico) => {
-    var adms = new List <AdministradorModelView>();
+    var adms = new List<AdministradorModelView>();
     var administradores = administradorServico.Todos(pagina);
-    foreach(var adm in administradores)
-    {
-        adms.Add(new AdministradorModelView{
+    foreach (var adm in administradores) {
+        adms.Add(new AdministradorModelView {
             Id = adm.Id,
             Email = adm.Email,
-            Perfil =adm.Perfil
-
+            Perfil = adm.Perfil
         });
     }
-
     return Results.Ok(adms);
-}).WithTags("Administradores");
+}).RequireAuthorization().WithTags("Administradores");
 
 app.MapPost("/administradores", ([FromBody] AdministradorDTO administradorDTO, IAdministradorServico administradorServico) => {
-    var validacao = new ErroDeValidacao
-    {
+    var validacao = new ErroDeValidacao {
         Mensagens = new List<string>()
     };
 
@@ -73,32 +96,30 @@ app.MapPost("/administradores", ([FromBody] AdministradorDTO administradorDTO, I
     if (validacao.Mensagens.Count > 0)
         return Results.BadRequest(validacao);
 
-    var administrador = new Administrador
-    {
+    var administrador = new Administrador {
         Email = administradorDTO.Email,
         Senha = administradorDTO.Senha,
         Perfil = administradorDTO.Perfil.ToString() ?? Perfil.Editor.ToString()
     };
 
     administradorServico.Incluir(administrador);
-    return Results.Created($"/administradores/{administrador.Id}", new AdministradorModelView{
+    return Results.Created($"/administradores/{administrador.Id}", new AdministradorModelView {
         Id = administrador.Id,
         Email = administrador.Email,
         Perfil = administrador.Perfil
-        
     });
 }).WithTags("Administradores");
 
 app.MapGet("/administradores/{id}", ([FromRoute] int id, IAdministradorServico administradorServico) => {
     var administrador = administradorServico.BuscaPorId(id);
 
-    if(administrador == null)
+    if (administrador == null)
         return Results.NotFound();
-        
-    return Results.Ok(new AdministradorModelView{
+
+    return Results.Ok(new AdministradorModelView {
         Id = administrador.Id,
         Email = administrador.Email,
-        Perfil =administrador.Perfil
+        Perfil = administrador.Perfil
     });
 }).WithTags("Administradores");
 
@@ -106,25 +127,20 @@ app.MapGet("/administradores/{id}", ([FromRoute] int id, IAdministradorServico a
 
 #region Veiculos
 
-ErroDeValidacao validaDTO(VeiculoDTO veiculoDTO)
-{
-    var validacao = new ErroDeValidacao
-    {
+ErroDeValidacao validaDTO(VeiculoDTO veiculoDTO) {
+    var validacao = new ErroDeValidacao {
         Mensagens = new List<string>()
     };
 
-    if (String.IsNullOrEmpty(veiculoDTO.Nome))
-    {
+    if (String.IsNullOrEmpty(veiculoDTO.Nome)) {
         validacao.Mensagens.Add("O nome não pode ser vazio!");
     }
 
-    if (String.IsNullOrEmpty(veiculoDTO.Marca))
-    {
+    if (String.IsNullOrEmpty(veiculoDTO.Marca)) {
         validacao.Mensagens.Add("A marca não pode ser vazia!");
     }
 
-    if (veiculoDTO.Ano < 1950)
-    {
+    if (veiculoDTO.Ano < 1950) {
         validacao.Mensagens.Add("Veículo muito antigo! Somente anos superiores a 1950.");
     }
 
@@ -134,13 +150,11 @@ ErroDeValidacao validaDTO(VeiculoDTO veiculoDTO)
 app.MapPost("/veiculos", ([FromBody] VeiculoDTO veiculoDTO, IVeiculoServico veiculoServico) => {
     var validacao = validaDTO(veiculoDTO);
 
-    if (validacao.Mensagens.Count > 0)
-    {
+    if (validacao.Mensagens.Count > 0) {
         return Results.BadRequest(validacao);
     }
 
-    var veiculo = new Veiculo
-    {
+    var veiculo = new Veiculo {
         Nome = veiculoDTO.Nome,
         Marca = veiculoDTO.Marca,
         Ano = veiculoDTO.Ano
@@ -173,8 +187,7 @@ app.MapPut("/veiculos/{id}", ([FromRoute] int id, VeiculoDTO veiculoDTO, IVeicul
 
     var validacao = validaDTO(veiculoDTO);
 
-    if (validacao.Mensagens.Count > 0)
-    {
+    if (validacao.Mensagens.Count > 0) {
         return Results.BadRequest(validacao);
     }
 
@@ -203,6 +216,9 @@ app.MapDelete("/veiculos/{id}", ([FromRoute] int id, IVeiculoServico veiculoServ
 #region App
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.Run();
 #endregion
