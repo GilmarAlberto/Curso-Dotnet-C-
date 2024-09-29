@@ -5,7 +5,7 @@ using MinimalAPI.Infraestrutura.Db;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace MinimalAPI.Dominio.Servico;
+namespace MinimalAPI.Dominio.Servicos;
 
 public class VeiculoServico : IVeiculoServico
 {

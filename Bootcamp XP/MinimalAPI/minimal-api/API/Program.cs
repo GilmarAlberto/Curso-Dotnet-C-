@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MinimalAPI.Dominio.Interfaces;
-using MinimalAPI.Dominio.Servico;
+using MinimalAPI.Dominio.Servicos;
 using Microsoft.AspNetCore.Mvc;
 using MinimalAPI.Infraestrutura.Db; // Para DbContexto
 using MinimalAPI.DTOs; // Para LoginDTO

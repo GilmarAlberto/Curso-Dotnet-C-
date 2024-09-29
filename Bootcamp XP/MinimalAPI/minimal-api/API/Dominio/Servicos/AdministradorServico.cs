@@ -4,7 +4,7 @@ using MinimalAPI.DTOs;
 using MinimalAPI.Infraestrutura.Db;
 using Microsoft.EntityFrameworkCore; // Para EF.Functions.Like
 
-namespace MinimalAPI.Dominio.Servico;
+namespace MinimalAPI.Dominio.Servicos;
 
 public class AdministradorServico : IAdministradorServico
 {

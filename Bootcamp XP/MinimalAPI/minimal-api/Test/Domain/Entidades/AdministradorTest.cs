@@ -1,6 +1,6 @@
 using MinimalAPI.Dominio.Entidades;
 
-namespace TestDomain.Entidades;
+namespace Test.Domain.Entidades;
 
 [TestClass]
 public class AdministradorTest
