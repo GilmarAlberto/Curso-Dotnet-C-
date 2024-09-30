@@ -44,6 +44,7 @@ namespace Test.Domain.Servicos // Corrigido para refletir a estrutura de pastas
             var admDoBanco = administradorServico.BuscaPorId(adm.Id);
 
             // Assert
+            Assert.IsNotNull(admDoBanco, "Administrador não encontrado no banco de dados.");
             Assert.AreEqual(1, admDoBanco.Id);
         }
     }
